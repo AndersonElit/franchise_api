@@ -3,6 +3,7 @@ package franchise.rest.api.controller.handler;
 import franchise.domain.ports.in.FranchisePort;
 import franchise.domain.request.FranchiseRequest;
 import franchise.domain.request.ProductRequest;
+import franchise.domain.request.StockRequest;
 import franchise.domain.request.StoreRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -42,6 +43,14 @@ public class FranchiseHandler {
                         .ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(productResponse));
+    }
+
+    public Mono<ServerResponse> updateStock(ServerRequest request) {
+        return request.bodyToMono(StockRequest.class)
+                .flatMap(franchisePort::updateStock)
+                .then(ServerResponse
+                        .ok()
+                        .build());
     }
 
 }

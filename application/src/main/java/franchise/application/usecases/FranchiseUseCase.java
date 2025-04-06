@@ -11,6 +11,7 @@ import franchise.domain.ports.out.StoreProductRepository;
 import franchise.domain.ports.out.StoreRepository;
 import franchise.domain.request.FranchiseRequest;
 import franchise.domain.request.ProductRequest;
+import franchise.domain.request.StockRequest;
 import franchise.domain.request.StoreRequest;
 import franchise.domain.response.FranchiseResponse;
 import franchise.domain.response.ProductResponse;
@@ -54,5 +55,10 @@ public class FranchiseUseCase implements FranchisePort {
                                 .name(product.getName())
                                 .storeId(productStore.getStoreId())
                                 .build()));
+    }
+
+    @Override
+    public Mono<Void> updateStock(StockRequest stockRequest) {
+        return storeProductRepository.updateStock(stockRequest.getStoreId(), stockRequest.getProductId(), stockRequest.getStock());
     }
 }

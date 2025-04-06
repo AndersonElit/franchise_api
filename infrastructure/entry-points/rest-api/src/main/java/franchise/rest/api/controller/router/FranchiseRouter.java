@@ -34,4 +34,12 @@ public class FranchiseRouter {
                 .build();
     }
 
+    @Bean
+    public RouterFunction<ServerResponse> routeStock(FranchiseHandler franchiseHandler) {
+        return RouterFunctions
+                .route()
+                .PUT("/franchise/stock/update", franchiseHandler::updateStock)
+                .build();
+    }
+
 }

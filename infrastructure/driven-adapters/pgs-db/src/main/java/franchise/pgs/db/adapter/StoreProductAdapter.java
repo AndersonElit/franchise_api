@@ -21,4 +21,10 @@ public class StoreProductAdapter implements StoreProductRepository {
         return storeProductRepository.save(Mapper.map(storeProduct, StoreProductEntity.class))
                 .map(storeProductEntity -> Mapper.map(storeProductEntity, StoreProduct.class));
     }
+
+    @Override
+    public Mono<Void> updateStock(Long storeId, Long productId, int stock) {
+        return storeProductRepository.updateStock(storeId, productId, stock)
+                .then();
+    }
 }
