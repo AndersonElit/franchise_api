@@ -27,4 +27,9 @@ public class StoreProductAdapter implements StoreProductRepository {
         return storeProductRepository.updateStock(storeId, productId, stock)
                 .then();
     }
+
+    @Override
+    public Mono<Void> deleteProduct(Long storeId, Long productId) {
+        return storeProductRepository.deleteByStoreIdAndProductId(storeId, productId).then();
+    }
 }

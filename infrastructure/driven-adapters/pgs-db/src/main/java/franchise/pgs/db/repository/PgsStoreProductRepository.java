@@ -8,4 +8,5 @@ import reactor.core.publisher.Mono;
 public interface PgsStoreProductRepository extends ReactiveCrudRepository<StoreProductEntity, Void> {
     @Query("UPDATE store_product SET stock = :stock WHERE store_id = :storeId AND product_id = :productId")
     Mono<Integer> updateStock(Long storeId, Long productId, int stock);
+    Mono<Void> deleteByStoreIdAndProductId(Long storeId, Long productId);
 }

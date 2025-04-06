@@ -42,4 +42,12 @@ public class FranchiseRouter {
                 .build();
     }
 
+    @Bean
+    public RouterFunction<ServerResponse> routeDeleteProduct(FranchiseHandler franchiseHandler) {
+        return RouterFunctions
+                .route()
+                .DELETE("/franchise/product/delete", franchiseHandler::deleteProduct)
+                .build();
+    }
+
 }
