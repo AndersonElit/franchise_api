@@ -1,0 +1,4 @@
+package franchise.pgs.db.adapter;
+
+public class StoreAdapter {
+}

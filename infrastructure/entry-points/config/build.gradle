@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':rest-api')
+    implementation project(':pgs-db')
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}

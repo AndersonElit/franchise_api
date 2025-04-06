@@ -1,0 +1,14 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}
+
+bootJar {
+    enabled = true
+}
